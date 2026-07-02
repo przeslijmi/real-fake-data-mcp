@@ -1,0 +1,36 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.przeslijmi/real-fake-data-mcp",
+  "title": "Real Fake Data",
+  "description": "Realistic synthetic test data — valid PESELs, NIPs, IBANs, addresses, people across 27 EU countries.",
+  "websiteUrl": "https://api.real-fake-data.com/docs",
+  "repository": {
+    "url": "https://github.com/przeslijmi/real-fake-data-mcp",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@przeslijmi/real-fake-data-mcp",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "REAL_FAKE_DATA_API_KEY",
+          "description": "API key sent as `Authorization: Bearer <key>`, lifting requests onto your metered plan. Omit to use the anonymous lane.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "REAL_FAKE_DATA_API_BASE_URL",
+          "description": "Override the hosted API. Defaults to https://api.real-fake-data.com; point it at a local API during development.",
+          "isRequired": false
+        }
+      ]
+    }
+  ]
+}

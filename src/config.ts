@@ -15,7 +15,7 @@ export interface McpServerConfig {
 }
 
 /** The hosted API the server talks to when `REAL_FAKE_DATA_API_BASE_URL` is unset. */
-export const DEFAULT_BASE_URL = 'https://realfakedata-api.onrender.com';
+export const DEFAULT_BASE_URL = 'https://api.real-fake-data.com';
 
 /**
  * Builds the server config from an environment bag (defaults to

@@ -1,6 +1,6 @@
 # @przeslijmi/real-fake-data-mcp
 
-A [Model Context Protocol](https://modelcontextprotocol.io) server for [Real Fake Data](https://realfakedata-api.onrender.com/docs) — gives an AI assistant (Claude Desktop, Claude Code, Cursor, …) realistic, synthetic test data on demand: valid PESELs (correct checksums), NIPs, REGONs, IBANs, addresses drawn from real cities and streets, people, and company names across 27 EU countries.
+A [Model Context Protocol](https://modelcontextprotocol.io) server for [Real Fake Data](https://api.real-fake-data.com/docs) — gives an AI assistant (Claude Desktop, Claude Code, Cursor, …) realistic, synthetic test data on demand: valid PESELs (correct checksums), NIPs, REGONs, IBANs, addresses drawn from real cities and streets, people, and company names across 27 EU countries.
 
 Output _looks_ real but is fake — safe for staging, demos, and seed data.
 
@@ -41,7 +41,7 @@ The client passes configuration through the server's `env`:
 | Variable                      | Required | Description                                                                                                   |
 | ----------------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | `REAL_FAKE_DATA_API_KEY`      | No       | API key sent as `Authorization: Bearer <key>`, lifting requests onto your metered plan. Omit to use the anonymous lane. |
-| `REAL_FAKE_DATA_API_BASE_URL` | No       | Override the hosted API. Defaults to `https://realfakedata-api.onrender.com`; point it at a local API during development. |
+| `REAL_FAKE_DATA_API_BASE_URL` | No       | Override the hosted API. Defaults to `https://api.real-fake-data.com`; point it at a local API during development. |
 
 ## Tools
 
@@ -68,11 +68,11 @@ Runs one generator and returns the API's `{ data, meta }` envelope.
 >
 > **Claude** _(calls `generate` with `{ generator: "pl.person", count: 3, options: { sex: "f" } }`)_ → three records of `{ name, surname, initials, birthDate, pesel }`.
 
-`options` are the same query parameters the generator exposes on the REST API — `list_generators` describes each, and the [API docs](https://realfakedata-api.onrender.com/docs) list them in full. Examples: `{ "format": "digits-only" }` for a NIP, `{ "teryt": "14" }` to anchor an address to a region, `{ "invalid": true }` to get a deliberately-wrong checksum for testing your validators.
+`options` are the same query parameters the generator exposes on the REST API — `list_generators` describes each, and the [API docs](https://api.real-fake-data.com/docs) list them in full. Examples: `{ "format": "digits-only" }` for a NIP, `{ "teryt": "14" }` to anchor an address to a region, `{ "invalid": true }` to get a deliberately-wrong checksum for testing your validators.
 
 ## How it relates to the REST API
 
-This server is a thin MCP front end over the same hosted endpoints the [Playwright addon](https://www.npmjs.com/package/@przeslijmi/real-fake-data-playwright) and [REST API](https://realfakedata-api.onrender.com/docs) serve. A generator id maps directly to a route — `pl.pesel` → `GET /v1/pl/pesel`, `any.email` → `GET /v1/email` — and metering, plan limits, and validation all behave identically. Use this package when you want an **AI assistant** to produce test data conversationally; use the Playwright addon or the REST API directly from code.
+This server is a thin MCP front end over the same hosted endpoints the [Playwright addon](https://www.npmjs.com/package/@przeslijmi/real-fake-data-playwright) and [REST API](https://api.real-fake-data.com/docs) serve. A generator id maps directly to a route — `pl.pesel` → `GET /v1/pl/pesel`, `any.email` → `GET /v1/email` — and metering, plan limits, and validation all behave identically. Use this package when you want an **AI assistant** to produce test data conversationally; use the Playwright addon or the REST API directly from code.
 
 ## License
 
