@@ -1,0 +1,32 @@
+# Smithery configuration for @przeslijmi/real-fake-data-mcp
+# https://smithery.ai/docs — connect this repo on Smithery; it reads this file
+# to learn how to launch the server over stdio.
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      realFakeDataApiKey:
+        type: string
+        description: >-
+          API key sent as `Authorization: Bearer <key>`, lifting requests onto
+          your metered plan. Omit to use the anonymous lane.
+      realFakeDataApiBaseUrl:
+        type: string
+        description: >-
+          Override the hosted API. Defaults to https://api.real-fake-data.com;
+          point it at a local API during development.
+    required: []
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', '@przeslijmi/real-fake-data-mcp'],
+      env: {
+        ...(config.realFakeDataApiKey
+          ? { REAL_FAKE_DATA_API_KEY: config.realFakeDataApiKey }
+          : {}),
+        ...(config.realFakeDataApiBaseUrl
+          ? { REAL_FAKE_DATA_API_BASE_URL: config.realFakeDataApiBaseUrl }
+          : {}),
+      },
+    })
