@@ -1,6 +1,6 @@
 {
   "name": "@przeslijmi/real-fake-data-mcp",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "mcpName": "io.github.przeslijmi/real-fake-data-mcp",
   "description": "Model Context Protocol (MCP) server for Real Fake Data — exposes the hosted RFD generators (PESEL, NIP, REGON, IBAN, addresses, companies, people across 27 EU countries) to AI assistants as tools.",
   "keywords": [

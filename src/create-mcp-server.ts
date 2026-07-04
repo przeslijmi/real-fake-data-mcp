@@ -8,8 +8,11 @@ import type { McpServerConfig } from './config.js';
 import { RfdApiError } from './errors.js';
 import { generatorIdToPath } from './generator-id.js';
 
-/** Bumped independently of the API; identifies this server to MCP clients. */
-const SERVER_VERSION = '0.1.0';
+/**
+ * Identifies this server to MCP clients. Keep in lockstep with the `version`
+ * in package.json / server.json — clients surface it in their server list.
+ */
+const SERVER_VERSION = '1.0.0';
 
 const jsonResult = (value: unknown): CallToolResult => ({
   content: [{ type: 'text', text: JSON.stringify(value, null, 2) }],

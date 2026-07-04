@@ -8,13 +8,13 @@
     "url": "https://github.com/przeslijmi/real-fake-data-mcp",
     "source": "github"
   },
-  "version": "0.1.1",
+  "version": "1.0.0",
   "packages": [
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "@przeslijmi/real-fake-data-mcp",
-      "version": "0.1.1",
+      "version": "1.0.0",
       "transport": {
         "type": "stdio"
       },
